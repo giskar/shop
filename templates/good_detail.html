@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+
+{% block content_title %}{% endblock %}
+
+{% block content %}
+  <div class="good-container" data-good-id="{{ good.id }}" data-user-id="{{ user.id }}" >
+        <ul>
+    {#      <li><a href="{{ url_for('goods_detail', name=goods.name) }}">{{ goods.name }}</a></li>#}
+            <li>{{ good.name }}</li>
+            <li>{{ good.amount }}</li>
+            <li>{{ good.size }}</li>
+            <li><img src = "http://127.0.0.1:5000/static/media/{{ good.image }} " style="height: auto; width: 400px;" > </li>
+    {#http://127.0.0.1:5000/api/reviews/?goods=1#}
+
+      </ul>
+
+      <div class='review-block' id="review"></div>
+      <div class="container" style="height: auto; width: 400px;">
+
+             <form class="form-signin"  method="post" role="form" >
+                 <h2 class="form-signin-heading">Reviews </h2>
+                 <input type="text" id="review1" class="form-control" placeholder="review" required>
+
+
+                 <button id="button1" class="btn btn-lg btn-primary btn-block" type="button">Add review</button>
+             </form>
+      </div>
+
+  </div>
+{% endblock %}
