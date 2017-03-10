@@ -88,6 +88,7 @@ from flask_peewee.utils import get_object_or_404, object_list
 
 @app.route('/')
 def goods_list():
+
     goods = Goods.select()
     return object_list('goods_list.html', goods, 'goods_list')
 
