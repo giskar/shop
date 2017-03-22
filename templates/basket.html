@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content_title %}Shopping cart
+    <script type="text/javascript" src="{{ url_for('static', filename='cart.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+     <div class='cart' id="cart"></div>
+{% endblock %}

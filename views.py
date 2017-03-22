@@ -122,3 +122,10 @@ def join():
             return redirect(url_for('goods_list'))
 
     return render_template('join.html')
+
+
+
+@app.route('/basket/')
+def basket():
+
+    return render_template('basket.html')

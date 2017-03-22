@@ -77,6 +77,44 @@ $(document).ready(function() {
 
     });
 
+     $('.goods-li #buy').click(function () {
+        var id = $(this).parent().attr('data-good-id');
+
+        if (Cookies.getJSON('goods') !== undefined) {
+
+            var arr = Cookies.getJSON('goods');
+
+            var regexp = new RegExp(id);
+            console.log(regexp);
+
+            if ( arr.search(regexp) == -1){
+
+               arr = arr+''+id;
+            }
+
+            else {alert( "Already" );}
+
+        }
+
+         else {
+            var arr = id;
+
+         }
+
+
+        Cookies.set("goods", JSON.stringify(arr));
+
+        var goods = Cookies.get("goods", { secure: true });
+        console.log(goods);
+
+        //console.log("blub");
+
+
+
+
+    });
+
+
 });
 
 

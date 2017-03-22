@@ -5,13 +5,14 @@
 {% block content %}
   <ul>
     {% for good in goods_list %}
-      <div class="goods-li">
+      <div class="goods-li" data-good-id="{{ good.id }}">
           <a href="{{ url_for('goods_detail', id=good.id) }}">{{ good.name }}
             <br>
             <div class="img-wrap big-image-list ">
                 <img width="300" height="auto" src = "http://127.0.0.1:5000/static/media/{{ good.image }} "  >
             </div>
           </a>
+      <button id="buy" type="button" class="btn btn-success">Buy</button>
 
 
 
