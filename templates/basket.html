@@ -6,4 +6,23 @@
 
 {% block content %}
      <div class='cart' id="cart"></div>
+
+    <div id="box" style="display: none;">
+      <form action="{{ url_for('buy') }}" method="post">
+        <dl>
+          <dd><input type="text" name="goods" id="goods" style="display: none;"></dd>
+          <dt>Contact name:</dt>
+          <dd><input type="text" name="name" id="name"></dd>
+          <dt>Contact phone number:</dt>
+          <dd><input type="number" name="phone" id="phone"></dd>
+          <dt>Payment method:</dt>
+          <dd><input type="text" name="payment" id="payment"></dd>
+          <dt>Delivery method:</dt>
+          <dd><input type="text" name="delivery" id="delivery"></dd>
+
+          <dd><input id="button" type="submit" value="Buy">
+        </dl>
+      </form>
+    </div>
+
 {% endblock %}

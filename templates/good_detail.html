@@ -6,11 +6,17 @@
 {% block content %}
   <div class="good-container" data-good-id="{{ good.id }}" data-user-id="{{ user.id }}" >
         <ul>
-    {#      <li><a href="{{ url_for('goods_detail', name=goods.name) }}">{{ goods.name }}</a></li>#}
-            <li>{{ good.name }}</li>
-            <li>{{ good.amount }}</li>
-            <li>{{ good.size }}</li>
-            <li><img src = "http://127.0.0.1:5000/static/media/{{ good.image }} " style="height: auto; width: 400px;" > </li>
+            <div class="inline">
+                <li><img src = "http://127.0.0.1:5000/static/media/{{ good.image }} " style="height: auto; width: 400px;" > </li>
+            </div>
+
+            <div class="inline">
+                <li>{{ good.name }}</li>
+                <li>{{ good.amount }}</li>
+                <li>{{ good.size }}</li>
+                <li>{{ good.price }}</li>
+            </div>
+
     {#http://127.0.0.1:5000/api/reviews/?goods=1#}
 
       </ul>

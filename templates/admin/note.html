@@ -1,0 +1,7 @@
+{% extends "admin/panels/default.html" %}
+
+{% block panel_content %}
+  {% for order in orders_list %}
+    <p>{{ order.goods }}: {{ order.name }}</p>
+  {% endfor %}
+{% endblock %}

@@ -18,6 +18,5 @@ if __name__ == '__main__':
     User.create_table(fail_silently=True)
     Reviews.create_table(fail_silently=True)
     Photo.create_table(fail_silently=True)
-    Testm.create_table(fail_silently=True)
-    Testph.create_table(fail_silently=True)
+    Order.create_table(fail_silently=True)
     app.run()

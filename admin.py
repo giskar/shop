@@ -1,14 +1,14 @@
 __author__ = 'troviln'
-from flask_peewee.admin import Admin, ModelAdmin
+from flask_peewee.admin import Admin, ModelAdmin, AdminPanel
 from app import app, db
 from auth import auth
-from model import Goods, User, Reviews, Photo, Testph, Testm
-from wtforms.fields import FileField, HiddenField, IntegerField, StringField
+from model import Goods, User, Reviews, Photo, Order
+from wtforms.fields import FileField, HiddenField, IntegerField, StringField, FloatField
 from wtforms.form import Form
 from flask import request
 
 class GoodsAdmin(ModelAdmin):
-    columns = ('id', 'name', 'amount', 'size', 'image', 'thumb')
+    columns = ('id', 'name', 'amount', 'price', 'size', 'image', 'thumb')
 
     def get_form(self, adding=False):
         class PhotoForm(Form):
@@ -16,6 +16,7 @@ class GoodsAdmin(ModelAdmin):
             name = StringField()
             amount = IntegerField()
             size = StringField()
+            price = FloatField()
             image = HiddenField()
             image_file = FileField('Image file')
 
@@ -69,6 +70,22 @@ class PhotoAdmin(ModelAdmin):
             instance.save_image(file)
         return instance
 
+
+
+
+
+class NotePanel(AdminPanel):
+    template_name = 'admin/note.html'
+
+    def get_context(self):
+        return {
+            'orders_list': Order.select().order_by(Order.pub_date.desc()).paginate(1, 3)
+        }
+
+
+
+
+
 admin = Admin(app, auth, branding='Example Site')
 
 auth.register_admin(admin)
@@ -77,5 +94,5 @@ admin.register(Photo, PhotoAdmin)
 admin.register(Goods, GoodsAdmin)
 admin.register(User, UserAdmin)
 admin.register(Reviews, ReviewsAdmin)
-admin.register(Testm)
-admin.register(Testph)
+admin.register(Order)
+admin.register_panel('Note', NotePanel)

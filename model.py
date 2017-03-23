@@ -6,6 +6,7 @@ import os
 from flask import Markup
 from werkzeug.utils import secure_filename
 from app import db, app
+from playhouse.fields import ManyToManyField
 
 class Photo(db.Model):
     image = CharField()
@@ -29,7 +30,9 @@ class Photo(db.Model):
 class Goods(db.Model):
     name = CharField(max_length=35)
     amount = IntegerField()
+    price = FloatField()
     size = CharField(max_length=20)
+
     image = CharField()
 
     # def __str__(self):
@@ -74,28 +77,17 @@ class Reviews(db.Model):
         return '%s: %s' % (self.pub_date, self.review)
 
 
-class Testm(db.Model):
-    name = CharField(max_length=200)
 
-class Testph(db.Model):
-    name = ForeignKeyField(Testm)
-    image = CharField()
+class Order(db.Model):
 
-    # def __str__(self):
-    #     return self.image
+    #goods = ManyToManyField(Goods)
+    goods = CharField()
+    name = CharField(max_length=55)
+    phone = IntegerField()
+    pay_method = CharField(max_length=55)
+    del_method = CharField(max_length=55)
+    pub_date = DateTimeField(default=datetime.datetime.now)
 
-    def save_image(self, file_obj):
-        self.image = secure_filename(file_obj.filename)
-        full_path = os.path.join(app.config['MEDIA_ROOT'], self.image)
-        file_obj.save(full_path)
-        self.save()
-
-    def url(self):
-        return os.path.join(app.config['MEDIA_URL'], self.image)
-
-    def thumb(self):
-        return Markup('<img src="%s" style="height: 80px;" />' % self.url())
 
     def __str__(self):
-        return '%s: %s' % (self.name, self.amount)
-
+        return '%s' % ( self.name)

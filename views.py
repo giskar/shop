@@ -2,7 +2,7 @@ __author__ = 'troviln'
 from flask import Flask, jsonify, request, abort, render_template, flash, redirect, url_for
 from app import app, db
 from auth import auth
-from model import Goods, User, Reviews, Photo
+from model import Goods, User, Reviews, Photo, Order
 import datetime
 
 
@@ -122,6 +122,26 @@ def join():
             return redirect(url_for('goods_list'))
 
     return render_template('join.html')
+
+
+
+@app.route('/buy/', methods=['GET', 'POST'])
+def buy():
+    if request.method == 'POST' and request.form['name']:
+
+        order = Order(
+            goods = request.form['goods'],
+            name = request.form['name'],
+            phone = request.form['phone'],
+            pay_method = request.form['payment'],
+            del_method = request.form['delivery'],
+
+        )
+
+        order.save()
+
+    return redirect(url_for('goods_list'))
+
 
 
 

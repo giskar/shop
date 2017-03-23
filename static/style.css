@@ -70,3 +70,9 @@ h2              { font-size: 1.2em; }
 
 
 }
+
+.inline {
+      margin: 10px;
+      display: inline-block;
+      position: relative;
+}
