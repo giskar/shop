@@ -4,15 +4,10 @@
 
 
     {% for order in list %}
-
-
-        {% for good in goods if not loop.length > 1 %}
-          {{ good.name }}
-
+         {{ order.name }} {{ order.phone }} {{ order.pay_method }}  {{ order.del_method }}
+        {% for good in order.goods %}
+            {{ good }}
         {% endfor %}
-
-        {{ order.name }} {{ order.phone }} {{ order.pay_method }}  {{ order.del_method }}
-
         <hr>
     {% endfor %}
 

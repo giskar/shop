@@ -1,3 +1,5 @@
+import pprint
+
 __author__ = 'troviln'
 from flask_peewee.admin import Admin, ModelAdmin, AdminPanel
 from app import app, db
@@ -6,6 +8,7 @@ from model import Goods, User, Reviews, Photo, Order
 from wtforms.fields import FileField, HiddenField, IntegerField, StringField, FloatField
 from wtforms.form import Form
 from flask import request
+
 
 class GoodsAdmin(ModelAdmin):
     columns = ('id', 'name', 'amount', 'price', 'size', 'image', 'thumb')
@@ -49,6 +52,7 @@ class CustomAdmin(Admin):
     def check_user_permission(self, user):
         return user.admin
 
+
 class ReviewsAdmin(ModelAdmin):
     columns = ('goods', 'review', 'pub_date', 'author')
 
@@ -71,43 +75,14 @@ class PhotoAdmin(ModelAdmin):
         return instance
 
 
-
-
-
 class NotePanel(AdminPanel):
     template_name = 'admin/note.html'
 
     def get_context(self):
-        srt = []
-        qrt = []
 
-        # for i in Order.select():
-        #     i.id
-        for i in Order.select():
-            engl_101 = Order.get(Order.id == i.id)
-            srt.append(engl_101)
-            for j in engl_101.goods:
-
-                qrt.append(j)
-
-
-
-        print(srt)
-        print(qrt)
-
-
-        # engl_101 = Order.get(Order.id == 7)
-        #
-        # goods = [good for good in engl_101.goods]
         return {
-            'list': srt,
-            'goods': qrt
-
-            # 'orders_list': Order.select().order_by(Order.pub_date.desc())
+            'list': Order.select(),
         }
-
-
-
 
 
 admin = Admin(app, auth, branding='Example Site')
@@ -120,3 +95,17 @@ admin.register(User, UserAdmin)
 admin.register(Reviews, ReviewsAdmin)
 admin.register(Order)
 admin.register_panel('Note', NotePanel)
+
+
+if __name__ == '__main__':
+    srt = []
+    qrt = []
+    for each in Order.select():
+        srt.append(each)
+        for j in each.goods:
+            qrt.append(j)
+
+    sss = 12312
+
+    print(srt)
+    print(qrt)
