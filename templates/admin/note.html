@@ -1,7 +1,19 @@
 {% extends "admin/panels/default.html" %}
 
 {% block panel_content %}
-  {% for order in orders_list %}
-    <p>{{ order.goods }}: {{ order.name }}</p>
-  {% endfor %}
+
+
+    {% for order in list %}
+
+
+        {% for good in goods if not loop.length > 1 %}
+          {{ good.name }}
+
+        {% endfor %}
+
+        {{ order.name }} {{ order.phone }} {{ order.pay_method }}  {{ order.del_method }}
+
+        <hr>
+    {% endfor %}
+
 {% endblock %}

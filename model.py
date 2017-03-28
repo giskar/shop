@@ -80,8 +80,8 @@ class Reviews(db.Model):
 
 class Order(db.Model):
 
-    #goods = ManyToManyField(Goods)
-    goods = CharField()
+    goods = ManyToManyField(Goods, related_name='orders')
+    #goods = CharField()
     name = CharField(max_length=55)
     phone = IntegerField()
     pay_method = CharField(max_length=55)

@@ -130,15 +130,25 @@ def buy():
     if request.method == 'POST' and request.form['name']:
 
         order = Order(
-            goods = request.form['goods'],
+            # goods = request.form['goods'],
             name = request.form['name'],
             phone = request.form['phone'],
             pay_method = request.form['payment'],
             del_method = request.form['delivery'],
-
         )
-
         order.save()
+
+
+        # huey = Goods.get(Goods.id == 2)
+        # cs1 = Order.get(Order.id == 2)
+        # huey.orders.add(cs1)
+        #
+        id_goods = request.form['goods'].split()
+        for id in id_goods:
+            huey = Goods.get(Goods.id == id)
+            huey.orders.add(Order.get(Order.id == order.id))
+
+
 
     return redirect(url_for('goods_list'))
 

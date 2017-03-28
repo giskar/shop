@@ -28,7 +28,6 @@ $(document).ready(function() {
 
             $.getJSON(ur, function (jd) {
 
-
                 var my = $('.cart');
                 var my1 = $('#goods');
                 var myl = '';
@@ -40,7 +39,7 @@ $(document).ready(function() {
                     var name = JSON.stringify(jd.objects[i].name);
                     var id = JSON.stringify(jd.objects[i].id);
                     var price = JSON.stringify(jd.objects[i].price);
-                    order += id + name;
+                    order += id + " ";
 
 
                     console.log("JSON Data: " + name);

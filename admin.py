@@ -78,8 +78,32 @@ class NotePanel(AdminPanel):
     template_name = 'admin/note.html'
 
     def get_context(self):
+        srt = []
+        qrt = []
+
+        # for i in Order.select():
+        #     i.id
+        for i in Order.select():
+            engl_101 = Order.get(Order.id == i.id)
+            srt.append(engl_101)
+            for j in engl_101.goods:
+
+                qrt.append(j)
+
+
+
+        print(srt)
+        print(qrt)
+
+
+        # engl_101 = Order.get(Order.id == 7)
+        #
+        # goods = [good for good in engl_101.goods]
         return {
-            'orders_list': Order.select().order_by(Order.pub_date.desc()).paginate(1, 3)
+            'list': srt,
+            'goods': qrt
+
+            # 'orders_list': Order.select().order_by(Order.pub_date.desc())
         }
 
 

@@ -19,4 +19,5 @@ if __name__ == '__main__':
     Reviews.create_table(fail_silently=True)
     Photo.create_table(fail_silently=True)
     Order.create_table(fail_silently=True)
+    Order.goods.get_through_model().create_table(fail_silently=True)
     app.run()
