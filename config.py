@@ -11,9 +11,8 @@ class Configuration(object):
 
 
     # DATABASE = {
-    #     'name': 'my_db',
+    #     'name': 'postgres',
     #     'engine': 'peewee.PostgresqlDatabase',
-    #     'user': 'postgres',
-    #     'password': 'postgres'
+    #
     #
     # }
