@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     var basket = function() {
 
-        if (Cookies.getJSON('goods') != '') {
+        if (Cookies.getJSON('goods') != '' ) {
             var ur = '/api/goods/?';
 
             if (Cookies.getJSON('goods') !== undefined) {
@@ -108,6 +108,7 @@ $(document).ready(function() {
         }
         else {
             $('.cart').empty();
+             Cookies.set("goods", JSON.stringify(''));
 
         }
     };

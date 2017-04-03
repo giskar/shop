@@ -8,3 +8,10 @@ class Configuration(object):
     DEBUG = True
     SECRET_KEY = 'shhhh'
 
+    # DATABASE = {
+    #     'name': 'my_db',
+    #     'engine': 'peewee.PostgresqlDatabase',
+    #     'user': 'postgres',
+    #     'password': 'postgres'
+    #
+    # }

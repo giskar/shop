@@ -3,12 +3,57 @@
 {% block panel_content %}
 
 
-    {% for order in list %}
-         {{ order.name }} {{ order.phone }} {{ order.pay_method }}  {{ order.del_method }}
-        {% for good in order.goods %}
-            {{ good }}
+    <table class="table table-bordered " width="10px">
+    <thead>
+      <tr>
+        <th class="shrink">name</th>
+        <th class="shrink">phone</th>
+        <th class="shrink">pay method</th>
+        <th class="shrink">delivery method</th>
+        <th class="shrink">goods</th>
+        <th class="shrink">order date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for order in list %}
+
+
+            <tr class="link">
+              <td><span>{{ order.name }}</span></td>
+              <td><span>{{ order.phone }}</span></td>
+              <td><span>{{ order.pay_method }}</span></td>
+              <td><span>{{ order.del_method }}</span></td>
+              <td>
+                <ul>
+
+                    {% for good in order.goods %}
+                        <li>{{ good }}</li>
+                    {% endfor %}
+
+                </ul>
+              </td>
+              <td><span>{{ order.pub_date }}</span></td>
+
+            </tr>
+
+
+{#            {{ order.name }} {{ order.phone }} {{ order.pay_method }}  {{ order.del_method }}#}
+{#            {% for good in order.goods %}#}
+{#                {{ good }}#}
+{#            {% endfor %}#}
+{#            <hr>#}
         {% endfor %}
-        <hr>
-    {% endfor %}
+
+
+
+
+    </tbody>
+  </table>
+
+
+
+
 
 {% endblock %}

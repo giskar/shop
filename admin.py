@@ -94,18 +94,6 @@ admin.register(Goods, GoodsAdmin)
 admin.register(User, UserAdmin)
 admin.register(Reviews, ReviewsAdmin)
 admin.register(Order)
-admin.register_panel('Note', NotePanel)
+admin.register_panel('Orders', NotePanel)
 
 
-if __name__ == '__main__':
-    srt = []
-    qrt = []
-    for each in Order.select():
-        srt.append(each)
-        for j in each.goods:
-            qrt.append(j)
-
-    sss = 12312
-
-    print(srt)
-    print(qrt)

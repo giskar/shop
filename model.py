@@ -51,7 +51,7 @@ class Goods(db.Model):
         return Markup('<img src="%s" style="height: 80px;" />' % self.url())
 
     def __str__(self):
-        return '%s: %s' % (self.name, self.amount)
+        return '%s: %s' % (self.id, self.name)
 
 
 class User(db.Model, BaseUser):
