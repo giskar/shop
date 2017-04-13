@@ -93,6 +93,14 @@ def goods_list():
     return object_list('goods_list.html', goods, 'goods_list')
 
 
+
+##angular
+@app.route('/ang')
+def try_ang():
+
+    return render_template('ang.html')
+
+
 @app.route('/goods/<id>/')
 def goods_detail(id):
     # good = get_object_or_404(Goods, Goods.id == id)

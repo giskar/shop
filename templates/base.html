@@ -1,7 +1,8 @@
-<html>
+<html ng-app="productApp">
 <title>Shop</title>
 
 <head>
+<base href="/" >
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 {% block extra_css %}{% endblock %}
@@ -12,6 +13,20 @@
 <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.9.1.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='lib/angular.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='lib/angular-resource.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='lib/angular-route.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='lib/angular-ui-router.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/ang.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/services.js') }}"></script>
+
+
+
+
+
 {% block login %}
     {% if not session.logged_in %}
     <a href="{{ url_for('auth.login') }}?next={{ request.path }}">log in</a>
